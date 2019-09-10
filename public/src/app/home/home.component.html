@@ -1,0 +1,23 @@
+ <!-- will plainly display the information on the page as json -->
+
+
+<button class="btn btn-secondary float-right" [routerLink]="['/new']">Add New Author</button>
+<!-- above creates a button within the 'home' component that will link to another component -->
+<!-- hitting the button should give error that route is not found until route is built out --> 
+<h1> All Authors </h1>
+{{ authors | json }} 
+
+<div class="allAuthors"  *ngFor="let author of authors">  <!-- loops through the input json object -->
+  <div class="row">
+    <div class="col">{{ author._id }}</div>   <!-- remember these items correlate with the Schema you create! -->
+    <div class="col">{{ author.first_name }}</div>
+    <div class="col">{{ author.last_name }}</div>
+    <div class="col">
+      <button class="btn btn-dark" [routerLink]="['/edit/' + author._id]">Edit</button>
+      <button class="btn btn-info" [routerLink]="['/show/' + author._id]">Show</button>
+        <!-- creates a button within the 'home' component that will link to another component -->
+      <button class="btn btn-danger" (click)="deleteOneAuthor(author._id)">Delete</button>
+    </div>
+    
+  </div>
+</div>

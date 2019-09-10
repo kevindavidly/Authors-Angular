@@ -1,0 +1,20 @@
+<button class="btn btn-secondary float-right" [routerLink]="['/home']">Home</button>
+<div class="h1"> Edit Author </div>
+
+{{ author | json }}
+{{ authorErrors | json }} <!-- will display errors as they come -->
+
+
+<!-- note that form items are two-way bound, so the names correlate with items outside of html file -->
+<form (submit) = "onSubmit()">
+  <!-- onSubmit() allows us to take in the posted data -->
+  
+  <small class="text-danger">{{ authorErrors.first_name }} </small>
+  <input type="text" class="form-control col-6 mb-3"name="author.first_name" [(ngModel)]="author.first_name">
+  
+  <small class="text-danger">{{ authorErrors.last_name }} </small>
+  <input type="text" class="form-control col-6 mb-3"name="author.last_name" [(ngModel)]="author.last_name">
+  
+  <input type="submit" class="btn btn-danger">
+  
+</form>

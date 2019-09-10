@@ -1,0 +1,20 @@
+<button class="btn btn-secondary float-right" [routerLink]="['/home']">Home</button>
+<h1>Author Details</h1>
+<!-- {{ author | json }} -->
+
+<h1 class="text-capitalize"> {{ author.first_name }} {{ author.last_name }} </h1>
+<h2>Quotes :</h2>
+<h2 *ngFor="let quote of author.quotes"> {{ quote.content }}</h2>
+
+
+<button class="btn btn-info" [routerLink]="['/edit/'+author._id]">Edit</button>
+
+<h1> Add Quote by Author </h1>
+
+<!-- {{ quote | json }} -->
+
+<form (submit)="onSubmit()"> 
+  <input type="text" name="quote.content" [(ngModel)]="quote.content">
+  <input type="submit" class="ml-3 btn btn-warning">
+
+</form>
